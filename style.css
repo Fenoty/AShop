@@ -223,7 +223,7 @@ div .Enter:hover{
 }
 
 .List{
-    color: white;    
+    color: white;
 }
 .LiHide{
     display: none;    
@@ -243,9 +243,9 @@ main{
     align-items: center;
     
 }
-.catalog p{
+.catalog li p{
     font-size: 14px;
-    margin: auto;
+    margin: 10px;
     height: 2em;
 }
 .catalog li img.wallet{
@@ -255,28 +255,31 @@ main{
     padding-left: 0.2em;
     
 }
-.catalog span{
+.catalog li span{
     color: rgb(185, 53, 1);
     font-size:16px;
     text-decoration: line-through;
     margin: 0px;
     padding: 0px;
+    
 }
 .catalog span.hot{
     color: white;
     font-size: 24px;
     margin: 0px;
     text-decoration: none;
+    
 }
-ul.catalog li{
+ul div.catalog li{
     font-size: 30px;
     padding: 0px;
-    width:5em;
+    width:6em;
     margin: 10px;
+    text-align: center;
 }
-ul.catalog li img{
-    height:5em;
-    width:5em;
+ul div.catalog li img{
+    height:6em;
+    width:6em;
     border-radius: 0.5em;
 }
 h1{
@@ -284,4 +287,21 @@ h1{
     text-align: center;    
     font-size:30px;
 }
-/* fdfdfds */
+ul div li button{
+    margin: 0px;
+    padding: 5px;
+    font-size: 20px;
+    color: inherit;
+    font-family: 'Comfortaa', cursive;
+    background-color: rgba(55, 55, 55, 1) ;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    text-align: center;
+    transition: 0.5s;
+}
+ul div li button:hover{
+    background-color:rgba(50, 50, 50, 1);
+    transition: 0.5s;
+}
+
