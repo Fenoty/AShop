@@ -11,18 +11,20 @@
     <link rel="icon" href="img/element-icon2.png">
     <link rel="stylesheet" href="css/prism.css">
     <link rel="stylesheet" href="css/index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">   
+
+    
 </head>
 <body>
 <header>
-    <div class="Con_Enter">
+    <!-- <div class="Con_Enter">
         <img class="Enter" src="img/Enter.svg">
         <div class="Enter_Text hidden">Войти</div>
-    </div>
+    </div> -->
     <div class="Title">ELEMENTARY</div>
     <div class="Right">
-        <input type="text" maxlength="40" class="g1">
-        <!-- <input class="Search_Block Search_Hidden" type="text" placeholder="Search"> -->
+        <input type="search" maxlength="40" class="g1">
         <img class="g2" src="img/Category.svg">
         <img class="g3" src="img/What.svg">
         <img class="g4" src="img/bag.svg">
@@ -30,7 +32,7 @@
 </header>
     <div class="g2_content g2_content_hidden">
             <ul class="dropdown">
-                <li name="1" class="cat" style="color: rgb(255, 251, 0)"> Новинки!</li>
+                <li name="1" class="cat" style="color: rgb(255, 251, 0)"> Скидки!</li>
                 <li name="2" class="cat"> Игровые мыши</li>
                 <li name="3" class="cat"> Игровые клавиатуры</li>
                 <li name="4" class="cat"> Игровые наушники</li>
@@ -38,34 +40,102 @@
                 <li name="6" class="cat"> Кресла</li>
                 <li name="7" class="cat"> Игровые столы</li>
                 <li name="8" class="cat"> Микрофоны</li>
-                <li name="9" class="cat"> Вебкамеры</li>
+                
             </ul>
     </div>
-<main id="Huy">
-    <div class="general">xuy</div>
+<main>
+  
+<div class="about-us hidrec">
+    <h1>О нас</h1>   
+    <p>
+        Компания <span>ELEMENTARY</span> предоставляет услуги интернет-магазина игровых девайсов.
+        Мы не имеем offline-магазина, поэтому все товары находятся на складах и ждут своих хозяев.
+        Такой подход помогает нам обходиться без лишней наценки, чтобы <span style="letter-spacing: 0px;">ВЫ</span> 
+        могли приобрести продукт по максимально выгодной цене.
+    
+    </p> 
+    
+    <h1>Обратная связь</h1>
+    <p>Телефон: <a href="tel:+79163649291">+7 (916) 364-92-91</a></p>
+    <p>Электронная почта: <a href="mailto: evocracoon@gmail.com">evocracoon@gmail.com</a></p>
+</div>
+
+
+
+
+
+<div id="vue">
+
+    <div class="general">
+        <div class="slider">
+            <input type="radio" name="switch" id="btn1" checked>
+            <input type="radio" name="switch" id="btn2">
+            <input type="radio" name="switch" id="btn3">
+            
+            <div class="switch">
+              <label for="btn1"></label>
+              <label for="btn2"></label>
+              <label for="btn3"></label>
+            </div>
+            
+            <div class="slider-inner">
+              <div class="slides">
+                <img src="img/slider_1.png"/>
+                <img src="img/slider_2.jpg"/>
+                <img src="img/slider_3.jpg"/>
+              </div>
+            </div>
+          </div>
+
+
+
+            <ul>
+            <div class="general-catalog">
+                <template v-for='elem in prod'>
+                <li v-for:="item in elem" >
+                        <img :src="item.image">
+                        <p>{{item.title}}</p>
+                        <span>{{item.discount}}</span>
+                        <span class="hot">{{item.cost}}</span><br>
+                        <button type="submit" @click="item.title">
+                        В корзину</button>
+                </li>
+                </template>
+            </div>
+            </ul>
+
+
+
+
+    </div> 
     <div class="List LiHide">
-        <h1>Игровые новинки со скидкой</h1>
+        <h1>Товары со скидкой</h1>
         <ul>
         <div class="catalog">
-            <li v-for:="item in items">
-                <img :src="item.image">
-                <p>{{item.title}}</p>
-                <span>{{item.price}}</span>
-                <span class="hot">{{item.disco}}</span><br>
+            <template v-for='el in prod'>
+            <template v-for:="cat in el">
+            <li v-if:="cat.discount.length>0">
+                <img :src="cat.image">
+                <p>{{cat.title}}</p>
+                <span>{{cat.discount}}</span>
+                <span class="hot">{{cat.cost}}</span><br>
                 <button>В корзину</button>
             </li>
+            </template>
+        </template>
         </div>
-        </ul>
+        </ul> 
     </div>
+
     <section class="List LiHide">
         <h1>Игровые мыши</h1>
-        <ul class="catalog">
+        <ul>
             <div class="catalog">
-                <li v-for:="item in items">
+                <li v-for:="item in prod.Mouses">
                     <img :src="item.image">
                     <p>{{item.title}}</p>
-                    <span>{{item.price}}</span>
-                    <span class="hot">{{item.disco}}</span><br>
+                    <span>{{item.discount}}</span>
+                    <span class="hot">{{item.cost}}</span><br>
                     <button>В корзину</button>
                 </li>
             </div>
@@ -73,52 +143,97 @@
     </section>
     <section class="List LiHide">
         <h1>Игровые клавиатуры</h1>
-        <ul class="catalog">
-            <li>
-                <img src="https://4frag.ru/image/cache/data/product/red-square-tesla-tkl-rgb-2020-1-300x300.jpg">
-                <p>Red Square Tesla TKL RGB 2020</p>
-                <span>3 990</span><br>
-                <span class="hot">1 990р.</span>
-                <img class="wallet" src="img/Wallet.svg" alt="Купить">
-            </li>
-            <li>
-                <img src="https://4frag.ru/image/cache/data/product/hyperx-alloy-origins-core-red-switch-1-300x300.jpg">
-                <p>HyperX Alloy Origins Core Blue Switch</p>
-                <span></span><br>
-                <span class="hot">9 990р.</span>
-                <img class="wallet" src="img/Wallet.svg" alt="Купить">
-            </li>
-            <li>
-                <img src="https://4frag.ru/image/cache/data/product/logitech-g512-gx-brown-tactile-switch-carbon-1-300x300.jpg">
-                <p>Logitech G512 GX Brown Tactile Switch Carbon</p>
-                <span></span><br>
-                <span class="hot">8 990р.</span>
-                
-                <img class="wallet" src="img/Wallet.svg" alt="Купить">
-            </li>
-            <li>
-                <img src="https://4frag.ru/image/cache/data/product/razer-blackwidow-v3-mini-hyperspeed-yellow-switch-1-300x300.jpg">
-                <p>Razer BlackWidow V3 Mini HyperSpeed Green Switch</p>
-                <span></span><br>
-                <span class="hot">15 990р.</span>
-                <img class="wallet" src="img/Wallet.svg" alt="Купить">
-            </li>
-            <li>
-                <img src="https://4frag.ru/image/cache/data/product/corsair-k60-rgb-pro-low-profile-cherry-mx-speed-1-300x300.jpg">
-                <p>Corsair K60 RGB PRO Low Profile Cherry MX Speed</p>
-                <span></span><br>
-                <span class="hot">11 490р.</span>
-                <img class="wallet" src="img/Wallet.svg" alt="Купить">
-            </li>        
+        <ul>
+            <div class="catalog">
+                <li v-for:="item in prod.Keyboard">
+                    <img :src="item.image">
+                    <p>{{item.title}}</p>
+                    <span>{{item.discount}}</span>
+                    <span class="hot">{{item.cost}}</span><br>
+                    <button>В корзину</button>
+                </li>
+            </div>
         </ul>
     </section>
-    <section class="List LiHide">4</section>
-    <section class="List LiHide">5</section>
-    <section class="List LiHide">Первый лист</section>
-    <section class="List LiHide">Первый лист</section>
-    <section class="List LiHide">Первый лист</section>
-    <section class="List LiHide">Первый лист</section>
+    <section class="List LiHide">
+        <h1>Игровые наушники</h1>
+        <ul>
+            <div class="catalog">
+                <li v-for:="item in prod.Headphones">
+                    <img :src="item.image">
+                    <p>{{item.title}}</p>
+                    <span>{{item.discount}}</span>
+                    <span class="hot">{{item.cost}}</span><br>
+                    <button>В корзину</button>
+                </li>
+            </div>
+        </ul>    
+    </section>
+   
+    <section class="List LiHide">
+        <h1>Коврики для мыши</h1>
+        <ul>
+            <div class="catalog">
+                <li v-for:="item in prod.Carpets">
+                    <img :src="item.image">
+                    <p>{{item.title}}</p>
+                    <span>{{item.discount}}</span>
+                    <span class="hot">{{item.cost}}</span><br>
+                    <button>В корзину</button>
+                </li>
+            </div>
+        </ul>
+    </section>
+    <section class="List LiHide">
+        <h1>Кресла</h1>
+        <ul>
+            <div class="catalog">
+                <li v-for:="item in prod.Chairs">
+                    <img :src="item.image">
+                    <p>{{item.title}}</p>
+                    <span>{{item.discount}}</span>
+                    <span class="hot">{{item.cost}}</span><br>
+                    <button>В корзину</button>
+                </li>
+            </div>
+        </ul>
+    </section>
+    <section class="List LiHide">
+        <h1>Игровые столы</h1>
+        <ul>
+            <div class="catalog">
+                <li v-for:="item in prod.Tables">
+                    <img :src="item.image">
+                    <p>{{item.title}}</p>
+                    <span>{{item.discount}}</span>
+                    <span class="hot">{{item.cost}}</span><br>
+                    <button>В корзину</button>
+                </li>
+            </div>
+        </ul>
+    </section>
+    <section class="List LiHide">
+        <h1>Микрофоны</h1>
+        <ul>
+            <div class="catalog">
+                <li v-for:="item in prod.Microphones">
+                    <img :src="item.image">
+                    <p>{{item.title}}</p>
+                    <span>{{item.discount}}</span>
+                    <span class="hot">{{item.cost}}</span><br>
+                    <button>В корзину</button>
+                </li>
+            </div>
+        </ul>
+    </section> 
+    
+</div>
 </main>
+<script lang="ts" src="products.js"></script>
 <script lang="ts" src="script.js"></script>
+<script lang="ts" src="classes.js"></script>
+
+
+<!-- <script lang="ts" src="Postgres.js"></script> -->
 </body>
 </html>
