@@ -44,7 +44,9 @@
             </ul>
     </div>
 <main>
-  
+
+
+<!--  О НАС  -->
 <div class="about-us hidrec">
     <h1>О нас</h1>   
     <p>
@@ -61,6 +63,10 @@
 </div>
 
 
+<!--  КОРЗИНА  -->
+<div id="cart">
+
+</div>
 
 
 
@@ -97,8 +103,7 @@
                         <p>{{item.title}}</p>
                         <span>{{item.discount}}</span>
                         <span class="hot">{{item.cost}}</span><br>
-                        <button type="submit" @click="item.title">
-                        В корзину</button>
+                        <button @click="add_cart(item.image,item.title,item.cost)">В корзину</button>
                 </li>
                 </template>
             </div>
@@ -112,14 +117,14 @@
         <h1>Товары со скидкой</h1>
         <ul>
         <div class="catalog">
-            <template v-for='el in prod'>
-            <template v-for:="cat in el">
-            <li v-if:="cat.discount.length>0">
-                <img :src="cat.image">
-                <p>{{cat.title}}</p>
-                <span>{{cat.discount}}</span>
-                <span class="hot">{{cat.cost}}</span><br>
-                <button>В корзину</button>
+            <template v-for='elem in prod'>
+            <template v-for:="item in elem">
+            <li v-if:="item.discount.length>0">
+                <img :src="item.image">
+                <p>{{item.title}}</p>
+                <span>{{item.discount}}</span>
+                <span class="hot">{{item.cost}}</span><br>
+                <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
             </li>
             </template>
         </template>
@@ -136,7 +141,7 @@
                     <p>{{item.title}}</p>
                     <span>{{item.discount}}</span>
                     <span class="hot">{{item.cost}}</span><br>
-                    <button>В корзину</button>
+                    <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
                 </li>
             </div>
         </ul>
@@ -150,7 +155,7 @@
                     <p>{{item.title}}</p>
                     <span>{{item.discount}}</span>
                     <span class="hot">{{item.cost}}</span><br>
-                    <button>В корзину</button>
+                    <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
                 </li>
             </div>
         </ul>
@@ -164,7 +169,7 @@
                     <p>{{item.title}}</p>
                     <span>{{item.discount}}</span>
                     <span class="hot">{{item.cost}}</span><br>
-                    <button>В корзину</button>
+                    <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
                 </li>
             </div>
         </ul>    
@@ -179,7 +184,7 @@
                     <p>{{item.title}}</p>
                     <span>{{item.discount}}</span>
                     <span class="hot">{{item.cost}}</span><br>
-                    <button>В корзину</button>
+                    <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
                 </li>
             </div>
         </ul>
@@ -193,7 +198,7 @@
                     <p>{{item.title}}</p>
                     <span>{{item.discount}}</span>
                     <span class="hot">{{item.cost}}</span><br>
-                    <button>В корзину</button>
+                    <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
                 </li>
             </div>
         </ul>
@@ -207,7 +212,7 @@
                     <p>{{item.title}}</p>
                     <span>{{item.discount}}</span>
                     <span class="hot">{{item.cost}}</span><br>
-                    <button>В корзину</button>
+                    <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
                 </li>
             </div>
         </ul>
@@ -221,7 +226,7 @@
                     <p>{{item.title}}</p>
                     <span>{{item.discount}}</span>
                     <span class="hot">{{item.cost}}</span><br>
-                    <button>В корзину</button>
+                    <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
                 </li>
             </div>
         </ul>
@@ -231,7 +236,7 @@
 </main>
 <script lang="ts" src="products.js"></script>
 <script lang="ts" src="script.js"></script>
-<script lang="ts" src="classes.js"></script>
+
 
 
 <!-- <script lang="ts" src="Postgres.js"></script> -->

@@ -22,11 +22,6 @@
 //   var cart = new Cart(1,2,3);
 //   console.log(cart.image, cart.title,cart.cost); 
 
-let arr =[{}];
 
-
-function add_cart(img, tit, cos){
-    return img+tit+cos;
-}
 
   
