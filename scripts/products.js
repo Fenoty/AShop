@@ -286,18 +286,18 @@ const Products = Vue.createApp({
                     cost: '16 990р.'
                 },
             ],
-        method:{ 
-            add_cart(el){
-                ArrayProducts.push(el);
-                console.log(ArrayProducts);
+        // method:{ 
+        //     add_cart(el){
+        //         ArrayProducts.push(el);
+        //         console.log(ArrayProducts);
                 
-            },
-            set_cart(){
-                for (let i = 0; i < ArrayProducts.length; i++) {
+        //     },
+        //     set_cart(){
+        //         for (let i = 0; i < ArrayProducts.length; i++) {
 
-                }
-            }
-        }
+        //         }
+        //     }
+        // }
         }
     }
    
@@ -317,7 +317,7 @@ Products.mount("#vue");
 
 
 
-var ArrayProducts=[];
+// var ArrayProducts=[];
 
 
 
