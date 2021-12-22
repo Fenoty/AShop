@@ -60,17 +60,24 @@
 </div>
 
 
-<!--  КОРЗИНА  -->
-<div class="cart hidrec">
-    <h1>Корзина</h1>
-    <p>Мы не имеем offline-магазина, поэтому все товары находятся на складах и ждут своих хозяев.
-        Такой подход помогает нам обходиться без лишней наценки, чтобы ВЫ
-        могли приобрести продукт по максимально выгодной цене.</p>
-</div>
 
 
 
 <div id="vue">
+
+<!--  КОРЗИНА  -->
+<div class="cart hidrec">
+    <h1>Корзина</h1>
+    <ul class="flex-container-ul">
+        <template v-for:="item in prod">
+            <li v-for:="i in ArrayProducts">
+                <template v-if:="item.id==i">
+                    <img class="img-cart" :src="item.image">{{item.title}} {{item.cost}}
+                </template>
+            </li>
+        </template>
+    </ul>
+</div>
 
     <div class="general">
         <div class="slider">
@@ -97,15 +104,13 @@
 
             <ul>
             <div class="general-catalog">
-                <template v-for='elem in prod'>
-                <li v-for:="item in elem" >
-                        <img :src="item.image">
-                        <p>{{item.title}}</p>
-                        <span>{{item.discount}}</span>
-                        <span class="hot">{{item.cost}}</span><br>
-                        <button @click="add_cart(item.image,item.title,item.cost)">В корзину</button>
+                <li v-for:="item in prod" >
+                    <img :src="item.image">
+                    <p>{{item.title}}</p>
+                    <span>{{item.discount}}</span>
+                    <span class="hot">{{item.cost}}</span><br>
+                    <button @click="method.add_cart(item.id)">В корзину</button>
                 </li>
-                </template>
             </div>
             </ul>
 
@@ -117,17 +122,15 @@
         <h1>Товары со скидкой</h1>
         <ul>
         <div class="catalog">
-            <template v-for='elem in prod'>
-            <template v-for:="item in elem">
-            <li v-if:="item.discount.length>0">
-                <img :src="item.image">
-                <p>{{item.title}}</p>
-                <span>{{item.discount}}</span>
-                <span class="hot">{{item.cost}}</span><br>
-                <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
-            </li>
+            <template v-for='item in prod'>
+                <li v-if:="item.discount.length>0">
+                    <img :src="item.image">
+                    <p>{{item.title}}</p>
+                    <span>{{item.discount}}</span>
+                    <span class="hot">{{item.cost}}</span><br>
+                    <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
+                </li>
             </template>
-        </template>
         </div>
         </ul> 
     </div>
@@ -136,13 +139,15 @@
         <h1>Игровые мыши</h1>
         <ul>
             <div class="catalog">
-                <li v-for:="item in prod.Mouses">
-                    <img :src="item.image">
-                    <p>{{item.title}}</p>
-                    <span>{{item.discount}}</span>
-                    <span class="hot">{{item.cost}}</span><br>
-                    <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
-                </li>
+                <template v-for:="item in prod">
+                    <li v-if:="item.class=='Mouse'">
+                        <img :src="item.image">
+                        <p>{{item.title}}</p>
+                        <span>{{item.discount}}</span>
+                        <span class="hot">{{item.cost}}</span><br>
+                        <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
+                    </li>
+                </template>
             </div>
         </ul>
     </section>
@@ -150,13 +155,15 @@
         <h1>Игровые клавиатуры</h1>
         <ul>
             <div class="catalog">
-                <li v-for:="item in prod.Keyboard">
-                    <img :src="item.image">
-                    <p>{{item.title}}</p>
-                    <span>{{item.discount}}</span>
-                    <span class="hot">{{item.cost}}</span><br>
-                    <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
-                </li>
+                <template v-for:="item in prod">
+                    <li v-if:="item.class=='Keyboard'">
+                        <img :src="item.image">
+                        <p>{{item.title}}</p>
+                        <span>{{item.discount}}</span>
+                        <span class="hot">{{item.cost}}</span><br>
+                        <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
+                    </li>
+                </template>
             </div>
         </ul>
     </section>
@@ -164,13 +171,15 @@
         <h1>Игровые наушники</h1>
         <ul>
             <div class="catalog">
-                <li v-for:="item in prod.Headphones">
-                    <img :src="item.image">
-                    <p>{{item.title}}</p>
-                    <span>{{item.discount}}</span>
-                    <span class="hot">{{item.cost}}</span><br>
-                    <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
-                </li>
+                <template v-for:="item in prod">
+                    <li v-if:="item.class=='Headphone'">
+                        <img :src="item.image">
+                        <p>{{item.title}}</p>
+                        <span>{{item.discount}}</span>
+                        <span class="hot">{{item.cost}}</span><br>
+                        <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
+                    </li>
+                </template>
             </div>
         </ul>    
     </section>
@@ -179,13 +188,15 @@
         <h1>Коврики для мыши</h1>
         <ul>
             <div class="catalog">
-                <li v-for:="item in prod.Carpets">
-                    <img :src="item.image">
-                    <p>{{item.title}}</p>
-                    <span>{{item.discount}}</span>
-                    <span class="hot">{{item.cost}}</span><br>
-                    <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
-                </li>
+                <template v-for:="item in prod">
+                    <li v-if:="item.class=='Carpets'">
+                        <img :src="item.image">
+                        <p>{{item.title}}</p>
+                        <span>{{item.discount}}</span>
+                        <span class="hot">{{item.cost}}</span><br>
+                        <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
+                    </li>
+                    </template>
             </div>
         </ul>
     </section>
@@ -193,13 +204,15 @@
         <h1>Кресла</h1>
         <ul>
             <div class="catalog">
-                <li v-for:="item in prod.Chairs">
-                    <img :src="item.image">
-                    <p>{{item.title}}</p>
-                    <span>{{item.discount}}</span>
-                    <span class="hot">{{item.cost}}</span><br>
-                    <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
-                </li>
+                <template v-for:="item in prod">
+                    <li v-if:="item.class=='Chair'">
+                        <img :src="item.image">
+                        <p>{{item.title}}</p>
+                        <span>{{item.discount}}</span>
+                        <span class="hot">{{item.cost}}</span><br>
+                        <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
+                    </li>
+                </template>
             </div>
         </ul>
     </section>
@@ -207,13 +220,15 @@
         <h1>Игровые столы</h1>
         <ul>
             <div class="catalog">
-                <li v-for:="item in prod.Tables">
-                    <img :src="item.image">
-                    <p>{{item.title}}</p>
-                    <span>{{item.discount}}</span>
-                    <span class="hot">{{item.cost}}</span><br>
-                    <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
-                </li>
+                <template v-for:="item in prod">
+                    <li v-if:="item.class=='Table'">
+                        <img :src="item.image">
+                        <p>{{item.title}}</p>
+                        <span>{{item.discount}}</span>
+                        <span class="hot">{{item.cost}}</span><br>
+                        <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
+                    </li>
+                </template>
             </div>
         </ul>
     </section>
@@ -221,13 +236,15 @@
         <h1>Микрофоны</h1>
         <ul>
             <div class="catalog">
-                <li v-for:="item in prod.Microphones">
-                    <img :src="item.image">
-                    <p>{{item.title}}</p>
-                    <span>{{item.discount}}</span>
-                    <span class="hot">{{item.cost}}</span><br>
-                    <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
-                </li>
+                <template v-for:="item in prod">
+                    <li v-if:="item.class=='Microphone'">
+                        <img :src="item.image">
+                        <p>{{item.title}}</p>
+                        <span>{{item.discount}}</span>
+                        <span class="hot">{{item.cost}}</span><br>
+                        <button v-on:click="add_cart(item.image,item.title,item.cost)">В корзину</button>
+                    </li>
+                </template>
             </div>
         </ul>
     </section> 
