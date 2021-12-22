@@ -1,37 +1,23 @@
-var Array_Cart = [[],[],[]];
-//add in cart
-var button = document.querySelectorAll("button");
-
-for (let i = 0; i < button.length; i++) {
-  button[i].onclick = function([]) {
-
-  }
-}
-
-
-
-
+//var list
+var g2=document.querySelector(".g2");
+var content=document.querySelector(".g2_content");
+var cat=document.querySelectorAll(".cat");
+var list=document.querySelectorAll(".List");
+var general=document.querySelector(".general");
+var cart=document.querySelector(".cart");
+var about_us=document.querySelector(".about-us");
+var g3 = document.querySelector(".g3");
+var g4 = document.querySelector(".g4");
 var g1=document.querySelector(".g1");
+var title=document.querySelector(".Title");
 
+//g1 
 g1.addEventListener("mouseover",()=> {
     g1.style.width="20vw";
     g1.addEventListener("mouseout",()=> {
         g1.style.width ="35px";
     });
 });
-
-
-
-//g2 button list
-var g2=document.querySelector(".g2");
-var content=document.querySelector(".g2_content");
-var cat=document.querySelectorAll(".cat");
-var list=document.querySelectorAll(".List");
-var general=document.querySelector(".general");
-
-//g3 list 
-var about_us=document.querySelector(".about-us");
-var g3 = document.querySelector(".g3");
 
 //g3 about-us forward page
 g3.addEventListener("click",()=>{
@@ -40,6 +26,12 @@ g3.addEventListener("click",()=>{
 
 });
 
+//cart
+g4.addEventListener("click",()=>{
+    close_all();
+    cart.classList.remove("hidrec");
+
+});
 
 //function close all pages
 function close_all(){
@@ -47,7 +39,8 @@ function close_all(){
         list[g].classList.add("LiHide"); 
     }    
     general.classList.add("LiHide");
-    about_us.classList.add("hidrec");   
+    about_us.classList.add("hidrec");
+    cart.classList.add("hidrec");   
 }
 
 //categories
@@ -69,26 +62,15 @@ g2.addEventListener("mouseover",()=> {
         g2.style.transform="rotate(0deg)";
         g2.style.opacity="100%";
     });
-    
-    
 });
 
 //enter to general page UWU
-var title=document.querySelector(".Title");
+
 title.addEventListener("click",()=>{
     close_all();
     general.classList.remove("LiHide");   
 });
 
-//перезагрузка страницы надо подумать как сделать 
-//чтобы оставаться на той странице на которой остался
-// if (window.performance) {
-//     console.log("Perfomance not supported");
-//   }
-//   if (performance.navigation.type == 1) {
-//   console.log( "Страница перезагружена" );
-//   } else {
-//   console.log( "Страница не перезагружена");
-//   }
+
 
 

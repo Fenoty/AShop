@@ -512,9 +512,18 @@ ul  li  button:hover{
     cursor: pointer;
 }
 
-.wrap{
-    flex-wrap: nowrap;
-    display: flex;
-    flex-direction: row;
-    justify-content:center;
+.cart{
+    text-align: center;
+    color: white;
+    font-size: 24px;
+}
+
+.cart p{
+    font-family: 'Raleway', sans-serif;
+    text-align: justify;
+    line-height: 1.5em;
+    margin-left: 18%;
+    width: 70%;
+    margin-top:5px;
+    margin-bottom: 10px;        
 }

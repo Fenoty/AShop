@@ -270,8 +270,10 @@ const Products = {
         methods:{
             add_cart(img, tit, cost){
                 alert("Товар "+tit+" добавлен в корзину");
-                new Cart(img, tit, cost)
-                alert(cart.image+" "+cart.title+" "+cart.cost);
+                var cart = new Cart(img,tit,cost);
+               
+                    alert(cart.image+cart.title+cart.cost);
+            
             }
         }    
 };
@@ -285,15 +287,8 @@ class Cart {
     this.title = title;
     this.cost = cost;
     }
-
-
-    set (image, title, cost) {
-    this.image = image;
-    this.title = title;
-    this.cost = cost;
-    }
-                
-            
+       
 }
 
-    var cart = new Cart();
+
+
