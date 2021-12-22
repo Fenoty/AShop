@@ -1,5 +1,7 @@
+
+
 //Enter code
-const Products = {
+const Products = Vue.createApp({
     data(){
         return{
         prod:[
@@ -299,12 +301,21 @@ const Products = {
         }
     }
    
-};
+});
+
+// Products.component('todo-item',{
+//     template: `
+//     <li v-for:="i in ArrayProducts">
+//         <template v-if:="item.id==$emit('Arra')">
+//             <img class="img-cart" :src="item.image">{{item.title}} {{item.cost}}
+//         </template>
+//     </li>
+//     `
+// })
+
+Products.mount("#vue");
 
 
-Vue.createApp(Products).mount("#vue");
-
-const
 
 var ArrayProducts=[];
 
